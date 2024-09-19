@@ -1,14 +1,27 @@
+# FinancialStochasticProcesses Class Documentation
 
-# Financial Stochastic Processes
+The `FinancialStochasticProcesses` class simulates various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models.
 
-A Python package for simulating various financial stochastic processes such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models.
+## Constructor
 
-## Features
+### `__init__(self, S0, T, dt, mu=0.05, sigma=0.2, lamb=0.75, kappa=0.15, theta=0.05, xi=0.2, regimes=None, P=None)`
 
-- **Geometric Brownian Motion (GBM)**: Simulate asset prices using the classic GBM model.
-- **Jump Diffusion**: Incorporate jumps into the asset price paths, simulating sudden price changes.
-- **Heston Model**: Simulate asset prices with stochastic volatility, capturing more realistic financial dynamics.
-- **Regime-Switching Model**: Simulate asset prices under different market regimes with transition probabilities between regimes.
+#### Parameters:
+- `S0` *(float)*: The initial stock price.
+- `T` *(float)*: The time horizon for the simulation.
+- `dt` *(float)*: The time step size for the simulation.
+- `mu` *(float, optional)*: The drift rate for GBM, Jump Diffusion, and Heston models. Default is `0.05`.
+- `sigma` *(float, optional)*: The volatility for GBM, Jump Diffusion, and Heston models. Default is `0.2`.
+- `lamb` *(float, optional)*: The jump intensity for the Jump Diffusion model. Default is `0.75`.
+- `kappa` *(float, optional)*: The mean reversion rate for the Heston model. Default is `0.15`.
+- `theta` *(float, optional)*: The long-run variance for the Heston model. Default is `0.05`.
+- `xi` *(float, optional)*: The volatility of variance for the Heston model. Default is `0.2`.
+- `regimes` *(list of tuples, optional)*: A list of tuples, where each tuple represents a different regime with its own drift and volatility. Used in the Regime-Switching model. Default is `None`.
+- `P` *(2D numpy array, optional)*: The transition probability matrix for the Regime-Switching model. Default is `None`.
+
+#### Example:
+```python
+process = FinancialStochasticProcesses(S0=100, T=1, dt=0.01, mu=0.05, sigma=0.2, lamb=0.75)
 
 ## Installation
 
@@ -25,7 +38,12 @@ pip install financial_stochastic_processes
 ```python
 from financial_stochastic_processes import FinancialStochasticProcesses
 ```
+### Adjust Model Parameters
 
+```python
+process=FinancialStochasticProcesses(S0, T, dt, mu=0.05, sigma=0.2, lamb=0.75, kappa=0.15, theta=0.05, xi=0.2, regimes=None, P=None)
+
+```
 ### Simulate Geometric Brownian Motion (GBM)
 
 ```python
