@@ -1,7 +1,13 @@
 # FinancialStochasticProcesses Class Documentation
 
 The `FinancialStochasticProcesses` class simulates various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models.
+## Installation
 
+You can install the package via `pip`:
+
+```bash
+pip install financial_stochastic_processes
+```
 ## Constructor
 
 ### `__init__(self, S0, T, dt, mu=0.05, sigma=0.2, lamb=0.75, kappa=0.15, theta=0.05, xi=0.2, regimes=None, P=None)`
@@ -22,14 +28,8 @@ The `FinancialStochasticProcesses` class simulates various financial stochastic 
 #### Example:
 ```python
 process = FinancialStochasticProcesses(S0=100, T=1, dt=0.01, mu=0.05, sigma=0.2, lamb=0.75)
-
-## Installation
-
-You can install the package via `pip`:
-
-```bash
-pip install financial_stochastic_processes
 ```
+
 
 ## Usage
 
