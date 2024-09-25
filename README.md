@@ -13,6 +13,7 @@ The **StochasticAssetPriceSimulator** is a Python class designed to simulate var
 
 - **Geometric Brownian Motion (GBM)**: Simulates asset price movements under the GBM assumption.
 - **Jump Diffusion Model**: Simulates asset price movements with both continuous price changes and discrete jumps, where jumps can be either upward or downward.
+- **Heston Model**: Simulates asset price dynamics with stochastic volatility using the Heston model.
 - **Seed Control**: Optionally set a random seed to generate reproducible simulations.
 
 
@@ -41,13 +42,20 @@ Use the `simulate_jump_diffusion` method to generate asset prices under a Jump D
 jump_diffusion_simulation = simulator.simulate_jump_diffusion()
 ```
 
+#### 4. Simulate Heston Model
+Use the `simulate_heston` method to generate asset prices under the Heston stochastic volatility model.
+
+```python
+heston_simulation, heston_volatility = simulator.simulate_heston()
+```
+
 #### Example Code:
 
 ```python
 import matplotlib.pyplot as plt
 
 # Initialize the simulator
-simulator = StochasticAssetPriceSimulator(S0=100, T=1, dt=0.01, seed=42)
+simulator = StochasticAssetPriceSimulator(S0=100, T=1, dt=0.01, sigma1=0.2, sigma2=0.2, V0=0.05, seed=42)
 
 # Simulate GBM
 gbm_prices = simulator.simulate_GBM()
@@ -55,9 +63,13 @@ gbm_prices = simulator.simulate_GBM()
 # Simulate Jump Diffusion
 jump_diffusion_prices = simulator.simulate_jump_diffusion()
 
+# Simulate Heston Model
+heston_prices, heston_volatility = simulator.simulate_heston()
+
 # Plot the results
 plt.plot(gbm_prices, label="GBM")
 plt.plot(jump_diffusion_prices, label="Jump Diffusion")
+plt.plot(heston_prices, label="Heston Model")
 plt.xlabel("Time")
 plt.ylabel("Asset Price")
 plt.legend()
