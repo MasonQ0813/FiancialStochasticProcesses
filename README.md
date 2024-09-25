@@ -1,6 +1,4 @@
-# FinancialStochasticProcesses Class Documentation
-
-The `FinancialStochasticProcesses` class simulates various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models.
+# FinancialStochasticProcesses Documentation
 ## Installation
 
 You can install the package via `pip`:
@@ -8,77 +6,86 @@ You can install the package via `pip`:
 ```bash
 pip install financial_stochastic_processes
 ```
-## Constructor
+## StochasticAssetPriceSimulator
+The **StochasticAssetPriceSimulator** is a Python class designed to simulate various financial stochastic processes, such as The `FinancialStochasticProcesses` class simulates various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models. This class can be used to model and simulate asset price dynamics with optional control over randomness using a seed for reproducibility.
 
-### `__init__(self, S0, T, dt, mu=0.05, sigma=0.2, lamb=0.75, kappa=0.15, theta=0.05, xi=0.2, regimes=None, P=None)`
+### Features
 
-#### Parameters:
-- `S0` *(float)*: The initial stock price.
-- `T` *(float)*: The time horizon for the simulation.
-- `dt` *(float)*: The time step size for the simulation.
-- `mu` *(float, optional)*: The drift rate for GBM, Jump Diffusion, and Heston models. Default is `0.05`.
-- `sigma` *(float, optional)*: The volatility for GBM, Jump Diffusion, and Heston models. Default is `0.2`.
-- `lamb` *(float, optional)*: The jump intensity for the Jump Diffusion model. Default is `0.75`.
-- `kappa` *(float, optional)*: The mean reversion rate for the Heston model. Default is `0.15`.
-- `theta` *(float, optional)*: The long-run variance for the Heston model. Default is `0.05`.
-- `xi` *(float, optional)*: The volatility of variance for the Heston model. Default is `0.2`.
-- `regimes` *(list of tuples, optional)*: A list of tuples, where each tuple represents a different regime with its own drift and volatility. Used in the Regime-Switching model. Default is `None`.
-- `P` *(2D numpy array, optional)*: The transition probability matrix for the Regime-Switching model. Default is `None`.
+- **Geometric Brownian Motion (GBM)**: Simulates asset price movements under the GBM assumption.
+- **Jump Diffusion Model**: Simulates asset price movements with both continuous price changes and discrete jumps, where jumps can be either upward or downward.
+- **Seed Control**: Optionally set a random seed to generate reproducible simulations.
 
-#### Example:
+
+
+#### 1. Initialize the Simulator
+
+You can initialize the simulator by providing the required parameters, including the initial stock price, time horizon, and time step size.
+
 ```python
-process = FinancialStochasticProcesses(S0=100, T=1, dt=0.01, mu=0.05, sigma=0.2, lamb=0.75)
+simulator = StochasticAssetPriceSimulator(S0=100, T=1, dt=0.01, seed=42)
 ```
 
+#### 2. Simulate Geometric Brownian Motion (GBM)
 
-## Usage
-
-### Import the Package
+Use the `simulate_GBM` method to generate asset prices under a GBM process.
 
 ```python
-from financial_stochastic_processes import FinancialStochasticProcesses
+gbm_simulation = simulator.simulate_GBM()
 ```
-### Adjust Model Parameters
+
+#### 3. Simulate Jump Diffusion
+
+Use the `simulate_jump_diffusion` method to generate asset prices under a Jump Diffusion process.
 
 ```python
-process=FinancialStochasticProcesses(S0, T, dt, mu=0.05, sigma=0.2, lamb=0.75, kappa=0.15, theta=0.05, xi=0.2, regimes=None, P=None)
-
+jump_diffusion_simulation = simulator.simulate_jump_diffusion()
 ```
-### Simulate Geometric Brownian Motion (GBM)
+
+#### Example Code:
 
 ```python
-S0 = 100  # Initial stock price
-T = 1     # Time horizon (1 year)
-dt = 0.01 # Time step size
+import matplotlib.pyplot as plt
 
-# Create an instance of the class
-process = FinancialStochasticProcesses(S0, T, dt)
+# Initialize the simulator
+simulator = StochasticAssetPriceSimulator(S0=100, T=1, dt=0.01, seed=42)
 
 # Simulate GBM
-gbm_path = process.simulate_GBM()
+gbm_prices = simulator.simulate_GBM()
+
+# Simulate Jump Diffusion
+jump_diffusion_prices = simulator.simulate_jump_diffusion()
+
+# Plot the results
+plt.plot(gbm_prices, label="GBM")
+plt.plot(jump_diffusion_prices, label="Jump Diffusion")
+plt.xlabel("Time")
+plt.ylabel("Asset Price")
+plt.legend()
+plt.title("Stochastic Asset Price Simulation")
+plt.show()
 ```
 
-### Simulate Jump Diffusion
+### Parameters
 
-```python
-jump_diffusion_path = process.simulate_jump_diffusion()
-```
+The following parameters are available when creating a `StochasticAssetPriceSimulator` instance:
 
-### Simulate Heston Stochastic Volatility Model
-
-```python
-heston_path = process.simulate_heston()
-```
-
-### Simulate Regime-Switching Model
-
-```python
-regimes = [(0.02, 0.1), (0.05, 0.2)]  # Two regimes with different drifts and volatilities
-P = np.array([[0.95, 0.05], [0.1, 0.9]])  # Transition matrix
-
-process = FinancialStochasticProcesses(S0, T, dt, regimes=regimes, P=P)
-regime_switching_path = process.simulate_regime_switching()
-```
+| Parameter | Description | Default Value |
+| --------- | ----------- | ------------- |
+| `S0`      | Initial stock price | Required |
+| `T`       | Time horizon | Required |
+| `dt`      | Time step size | Required |
+| `mu`      | Drift (expected return) | `0.05` |
+| `sigma`   | Volatility | `0.2` |
+| `lamb`    | Jump intensity (average number of jumps) | `0.75` |
+| `p`       | Probability of upward jumps | `0.5` |
+| `lambda1` | Intensity of upward jumps | `1.0` |
+| `lambda2` | Intensity of downward jumps | `1.0` |
+| `kappa`   | Mean reversion rate (Heston model) | `0.15` |
+| `theta`   | Long-run variance (Heston model) | `0.05` |
+| `xi`      | Volatility of variance (Heston model) | `0.2` |
+| `regimes` | Parameters for Regime Switching Model | `None` |
+| `P`       | Transition matrix for Regime Switching | `None` |
+| `seed`    | Seed for reproducibility | `None` |
 
 ## Requirements
 
