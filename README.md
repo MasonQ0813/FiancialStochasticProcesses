@@ -102,9 +102,9 @@ The following parameters are available when creating a `StochasticAssetPriceSimu
 | `V0`        | Initial variance for Heston model (Heston model)         | `0.05`        |
 | `sigma1`    | Volatility coefficient for W1 (Heston)     | `0.2`         |
 | `sigma2`    | Volatility coefficient for W2 (Heston)     | `0.2`         |
-P_tran | Transition matrix (regime-switching model)	| np.array([[0.3,0.7], [0.4,0.6]]) |
-mu_rs | Drift for the second regime (regime-switching model) | 0.07 |
-sigma_rs | Volatility for the second regime (regime-switching model) | 0.4 |
+P_tran | Transition matrix (regime-switching model)	| `np.array([[0.3,0.7], [0.4,0.6]])` |
+mu_rs | Drift for the second regime (regime-switching model) | `0.07` |
+sigma_rs | Volatility for the second regime (regime-switching model) | `0.4` |
 | `seed`      | Seed for reproducibility                   | `None`        |
 
 
