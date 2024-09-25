@@ -78,6 +78,7 @@ The following parameters are available when creating a `StochasticAssetPriceSimu
 | `sigma`   | Volatility | `0.2` |
 | `lamb`    | Jump intensity (average number of jumps) | `0.75` |
 | `p`       | Probability of upward jumps | `0.5` |
+| `q`       | Probability of downward jumps | `0.5` |
 | `lambda1` | Intensity of upward jumps | `1.0` |
 | `lambda2` | Intensity of downward jumps | `1.0` |
 | `kappa`   | Mean reversion rate (Heston model) | `0.15` |
