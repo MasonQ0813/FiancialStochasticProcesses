@@ -24,6 +24,7 @@ The **StochasticAssetPriceSimulator** is a Python class designed to simulate var
 You can initialize the simulator by providing the required parameters, including the initial stock price, time horizon, and time step size.
 
 ```python
+from financial_stochastic_processes import StochasticAssetPriceSimulator
 simulator = StochasticAssetPriceSimulator(S0=100, T=1, dt=0.01, seed=42)
 ```
 
