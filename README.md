@@ -14,6 +14,7 @@ The **StochasticAssetPriceSimulator** is a Python class designed to simulate var
 - **Geometric Brownian Motion (GBM)**: Simulates asset price movements under the GBM assumption.
 - **Jump Diffusion Model**: Simulates asset price movements with both continuous price changes and discrete jumps, where jumps can be either upward or downward.
 - **Heston Model**: Simulates asset price dynamics with stochastic volatility using the Heston model.
+- **Regime-Switching Model**: Simulates asset prices under different market regimes using a regime-switching model.
 - **Seed Control**: Optionally set a random seed to generate reproducible simulations.
 
 
@@ -48,7 +49,11 @@ Use the `simulate_heston` method to generate asset prices under the Heston stoch
 ```python
 heston_simulation, heston_volatility = simulator.simulate_heston()
 ```
-
+#### 5. Simulate Regime-Switching Model
+Use the `simulate_regime_switching method` to generate asset prices under the regime-switching model.
+```python
+regime_switching_simulation = simulator.simulate_regime_switching()
+```
 #### Example Code:
 
 ```python
@@ -97,6 +102,9 @@ The following parameters are available when creating a `StochasticAssetPriceSimu
 | `V0`        | Initial variance for Heston model (Heston model)         | `0.05`        |
 | `sigma1`    | Volatility coefficient for W1 (Heston)     | `0.2`         |
 | `sigma2`    | Volatility coefficient for W2 (Heston)     | `0.2`         |
+P_tran | Transition matrix (regime-switching model)	| np.array([[0.3,0.7], [0.4,0.6]]) |
+mu_rs | Drift for the second regime (regime-switching model) | 0.07 |
+sigma_rs | Volatility for the second regime (regime-switching model) | 0.4 |
 | `seed`      | Seed for reproducibility                   | `None`        |
 
 
