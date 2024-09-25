@@ -7,7 +7,7 @@ You can install the package via `pip`:
 pip install financial_stochastic_processes
 ```
 ## StochasticAssetPriceSimulator
-The **StochasticAssetPriceSimulator** is a Python class designed to simulate various financial stochastic processes, such as The `FinancialStochasticProcesses` class simulates various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models. This class can be used to model and simulate asset price dynamics with optional control over randomness using a seed for reproducibility.
+The **StochasticAssetPriceSimulator** is a Python class designed to simulate various financial stochastic processes, such as Geometric Brownian Motion (GBM), Jump Diffusion, Heston Stochastic Volatility model, and Regime-Switching models. This class can be used to model and simulate asset price dynamics with optional control over randomness using a seed for reproducibility.
 
 ### Features
 
