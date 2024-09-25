@@ -83,21 +83,20 @@ The following parameters are available when creating a `StochasticAssetPriceSimu
 
 | Parameter   | Description                                | Default Value |
 | ----------- | ------------------------------------------ | ------------- |
-| `S0`        | Initial stock price                        | Required      |
-| `T`         | Time horizon                               | Required      |
-| `dt`        | Time step size                             | Required      |
-| `mu`        | Drift (expected return)                    | `0.05`        |
+| `S0`        | Initial stock price (Every Model)                       | Required      |
+| `T`         | Time horizon      (Every Model)                         | Required      |
+| `dt`        | Time step size(Every Model)                             | Required      |
+| `mu`        | Drift (expected return)(GBM, Jump Diffusion)                    | `0.05`        |
 | `sigma`     | Volatility (GBM, Jump Diffusion)           | `0.2`         |
-| `lamb`      | Jump intensity (average number of jumps)   | `0.75`        |
-| `p`         | Probability of upward jumps                | `0.5`         |
-| `lambda1`   | Intensity of upward jumps                  | `1.0`         |
-| `lambda2`   | Intensity of downward jumps                | `1.0`         |
+| `lamb`      | Jump intensity (average number of jumps)(Jump Diffusion)   | `0.75`        |
+| `p`         | Probability of upward jumps(Jump Diffusion)                | `0.5`         |
+| `lambda1`   | Intensity of upward jumps(Jump Diffusion)                  | `1.0`         |
+| `lambda2`   | Intensity of downward jumps(Jump Diffusion)                | `1.0`         |
 | `kappa`     | Mean reversion rate (Heston model)         | `0.15`        |
 | `theta`     | Long-term variance mean (Heston model)     | `0.05`        |
-| `V0`        | Initial variance for Heston model          | `0.05`        |
+| `V0`        | Initial variance for Heston model (Heston model)         | `0.05`        |
 | `sigma1`    | Volatility coefficient for W1 (Heston)     | `0.2`         |
 | `sigma2`    | Volatility coefficient for W2 (Heston)     | `0.2`         |
-| `xi`        | Volatility of variance (optional)          | `0.2`         |
 | `seed`      | Seed for reproducibility                   | `None`        |
 
 
