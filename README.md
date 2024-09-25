@@ -81,24 +81,25 @@ plt.show()
 
 The following parameters are available when creating a `StochasticAssetPriceSimulator` instance:
 
-| Parameter | Description | Default Value |
-| --------- | ----------- | ------------- |
-| `S0`      | Initial stock price | Required |
-| `T`       | Time horizon | Required |
-| `dt`      | Time step size | Required |
-| `mu`      | Drift (expected return) | `0.05` |
-| `sigma`   | Volatility | `0.2` |
-| `lamb`    | Jump intensity (average number of jumps) | `0.75` |
-| `p`       | Probability of upward jumps | `0.5` |
-| `q`       | Probability of downward jumps | `0.5` |
-| `lambda1` | Intensity of upward jumps | `1.0` |
-| `lambda2` | Intensity of downward jumps | `1.0` |
-| `kappa`   | Mean reversion rate (Heston model) | `0.15` |
-| `theta`   | Long-run variance (Heston model) | `0.05` |
-| `xi`      | Volatility of variance (Heston model) | `0.2` |
-| `regimes` | Parameters for Regime Switching Model | `None` |
-| `P`       | Transition matrix for Regime Switching | `None` |
-| `seed`    | Seed for reproducibility | `None` |
+| Parameter   | Description                                | Default Value |
+| ----------- | ------------------------------------------ | ------------- |
+| `S0`        | Initial stock price                        | Required      |
+| `T`         | Time horizon                               | Required      |
+| `dt`        | Time step size                             | Required      |
+| `mu`        | Drift (expected return)                    | `0.05`        |
+| `sigma`     | Volatility (GBM, Jump Diffusion)           | `0.2`         |
+| `lamb`      | Jump intensity (average number of jumps)   | `0.75`        |
+| `p`         | Probability of upward jumps                | `0.5`         |
+| `lambda1`   | Intensity of upward jumps                  | `1.0`         |
+| `lambda2`   | Intensity of downward jumps                | `1.0`         |
+| `kappa`     | Mean reversion rate (Heston model)         | `0.15`        |
+| `theta`     | Long-term variance mean (Heston model)     | `0.05`        |
+| `V0`        | Initial variance for Heston model          | `0.05`        |
+| `sigma1`    | Volatility coefficient for W1 (Heston)     | `0.2`         |
+| `sigma2`    | Volatility coefficient for W2 (Heston)     | `0.2`         |
+| `xi`        | Volatility of variance (optional)          | `0.2`         |
+| `seed`      | Seed for reproducibility                   | `None`        |
+
 
 ## Requirements
 
